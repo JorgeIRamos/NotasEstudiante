@@ -45,5 +45,29 @@ namespace NotApps.Presentacion
             Console.WriteLine(estudiante.EstadoEstudiante());
             Console.ReadKey();
         }
+
+        public void ConsultaListaEstudiantes()
+        {
+            Console.SetCursorPosition(20, 5); Console.Write("CONSULTA GENERAL DE ESTUDIANTES");
+            Console.SetCursorPosition(10, 7); Console.Write("ID   |    NOMBRE    |    SEXO    |    NOTA 1   |    NOTA 2  |   NOTA 3   |   DEFINITIVA");
+            ServicioEstudiante.ConsultaGeneral(estudiante);
+            Console.ReadKey();
+        }
+
+        public void Eliminar()
+        {
+            Console.WriteLine("DIGITE LA ID A ELIMINAR");
+            int id = int.Parse(Console.ReadLine());
+            Console.WriteLine(ServicioEstudiante.EliminarEstudiante(id));
+            Console.ReadKey();
+        }
+
+        public void Buscar()
+        {
+            Console.WriteLine("DIGITE LA ID A BUSCAR");
+            int id = int.Parse(Console.ReadLine());
+            ServicioEstudiante.ConsultarEstudiante(id);
+            Console.ReadKey();
+        }
     }
 }

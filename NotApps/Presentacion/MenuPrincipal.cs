@@ -11,15 +11,18 @@ namespace NotApps.Presentacion
         public void menu()
         {
             int op;
+            EstudiantePresentacion estupresentacion = new EstudiantePresentacion();
 
             do
             {
                 Console.Clear();
+
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("1- AGREGAR ESTUDIANTE");
-                Console.WriteLine("2- CONSULTAR ESTUDIANTE");
-                Console.WriteLine("3- CONSULTA SELECTIVA ESTUDIANTE");
-                Console.WriteLine("4- SALIR");
+                Console.WriteLine("2- LISTA ESTUDIANTE");
+                Console.WriteLine("3- BUSQUEDA DE ESTUDIANTE");
+                Console.WriteLine("4- ELIMINAR ESTUDIANTE");
+                Console.WriteLine("5- SALIR");
 
                 Console.WriteLine("SELECCIONE UNA OPCION (1-4)");
                 op = int.Parse(Console.ReadLine());
@@ -27,25 +30,36 @@ namespace NotApps.Presentacion
                 switch (op)
                 {
                     case 1:
-                        EstudiantePresentacion estupresentacion = new EstudiantePresentacion();
+                        
                         Console.Clear();
                         estupresentacion.CapturarNotas();
                         estupresentacion.ImprimirResultados();
                         break;
 
                     case 2:
+                        Console.Clear();
+                        estupresentacion.ConsultaListaEstudiantes();
                         break;
 
                     case 3:
+                        Console.Clear();
+                        estupresentacion.Buscar();
                         break;
 
                     case 4:
-                        Environment.Exit(0);
+                        Console.Clear();
+                        estupresentacion.Eliminar();
+                        break;
+
+                    case 5:
+                        Console.Clear();
+                        Console.WriteLine("GRACIAS POR UTILIZAR EL PROGRAMA");
+                        Console.ReadKey();
                         break;
                 }
 
 
-            } while (op != 3);
+            } while (op != 5);
         }
     }
 }
