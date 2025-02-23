@@ -10,6 +10,8 @@ namespace NotApps
     {
         static void Main(string[] args)
         {
+            Presentacion.MenuPrincipal menuPrincipal = new Presentacion.MenuPrincipal();
+            menuPrincipal.menu();
         }
     }
 }

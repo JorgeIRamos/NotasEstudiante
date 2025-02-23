@@ -10,10 +10,11 @@ namespace NotApps.Presentacion
     class EstudiantePresentacion
     {
         Logica.ServicioEstudiante ServicioEstudiante = new Logica.ServicioEstudiante();
+        Estudiante estudiante;
 
         public void CapturarNotas()
         {
-            Estudiante estudiante = new Estudiante();
+            estudiante = new Estudiante();
             Console.Clear();
             Console.WriteLine("--CAPTURA DE NOTAS--");
             Console.Write("ID : "); estudiante.ID = int.Parse(Console.ReadLine());
@@ -32,6 +33,17 @@ namespace NotApps.Presentacion
 
         public void ImprimirResultados()
         {
+            Console.Clear();
+            Console.WriteLine("--RESULTADOS--");
+            Console.WriteLine($"ID : {estudiante.ID}");
+            Console.WriteLine($"NOMBRE : {estudiante.Nombre}");
+            Console.WriteLine($"SEXO : {estudiante.Sexo}");
+            Console.WriteLine($"NOTA 1 : {estudiante.Nota1}");
+            Console.WriteLine($"NOTA 2 : {estudiante.Nota2}");
+            Console.WriteLine($"NOTA 3 : {estudiante.Nota3}");
+            Console.WriteLine($"DEFINITIVA : {estudiante.CalcularDefinitiva()}");
+            Console.WriteLine(estudiante.EstadoEstudiante());
+            Console.ReadKey();
         }
     }
 }

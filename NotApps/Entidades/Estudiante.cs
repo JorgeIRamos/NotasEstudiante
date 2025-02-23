@@ -17,7 +17,7 @@ namespace NotApps.Entidades
             return Nota1 * 0.3f + Nota2 * 0.3f + Nota3 * 0.4f;
         }
 
-        private String EstadoEstudiante()
+        public String EstadoEstudiante()
         {
             if (CalcularDefinitiva() >= 3)
             {

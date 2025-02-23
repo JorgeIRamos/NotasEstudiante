@@ -14,6 +14,7 @@ namespace NotApps.Presentacion
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("1- AGREGAR ESTUDIANTE");
                 Console.WriteLine("2- CONSULTAR ESTUDIANTE");
@@ -29,6 +30,7 @@ namespace NotApps.Presentacion
                         EstudiantePresentacion estupresentacion = new EstudiantePresentacion();
                         Console.Clear();
                         estupresentacion.CapturarNotas();
+                        estupresentacion.ImprimirResultados();
                         break;
 
                     case 2:
