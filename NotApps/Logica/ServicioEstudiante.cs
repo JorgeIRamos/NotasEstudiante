@@ -18,7 +18,7 @@ namespace NotApps.Logica
 
         public string AgregarEstudiante(Estudiante estudiante)
         {
-            if (ExisteEstudiante(estudiante))
+            if (BuscarEstudiante(estudiante) != null)
             {
                 return "El estudiante ya esta registrado";
             }
@@ -26,21 +26,9 @@ namespace NotApps.Logica
             return "Datos agregados correctamente ...";
         }
 
-        public bool ExisteEstudiante(Estudiante estudiante)
-        {
-            foreach(var item in ListaEstudiantes)
-            {
-                if (item.ID == estudiante.ID)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
        public void ConsultaGeneral(Estudiante estudiante)
         {
-            int fila = 9;
+            int fila = 15;
 
             foreach (var item in ListaEstudiantes)
             {
@@ -57,19 +45,16 @@ namespace NotApps.Logica
 
         public string EliminarEstudiante(int id)
         {
-            foreach (var item in ListaEstudiantes)
+            var EstudianteEncontrado = BuscarEstudiante(id);
+            if (EstudianteEncontrado != null)
             {
-                if (item.ID == id)
-                {
-                    ListaEstudiantes.Remove(item);
-                    return "ESTUDIANTE ELIMINADO CON EXITO";
-                }
+                ListaEstudiantes.Remove(EstudianteEncontrado);
+                return "ESTUDIANTE ELIMINADO";
             }
-            return "NO SE PUDO ELIMINAR"; 
-                
+            return "NO SE PUDO ELIMINAR EL ESTUDIANTE";
         }
 
-        public void ConsultarEstudiante(int id)
+        public string ConsultarEstudiante(int id)
         {
             foreach (var item in ListaEstudiantes)
             {
@@ -83,8 +68,49 @@ namespace NotApps.Logica
                     Console.WriteLine("NOTA 3= " + item.Nota3);
                     Console.WriteLine("DEFINITIVA= " + item.CalcularDefinitiva());
                     Console.WriteLine("ESTADO= " + item.EstadoEstudiante());
+                    return "ESTUDIANTE ENCONTRADO";
                 }
             }
+            return "NO SE PUDO ENCONTRAR";
+        }
+
+        public string ModificarEstudiante(Estudiante estudiante)
+        {
+            var EstudianteEncontrado = BuscarEstudiante(estudiante);
+            if (EstudianteEncontrado != null)
+            {
+                EstudianteEncontrado.Nombre = estudiante.Nombre;
+                EstudianteEncontrado.Sexo = estudiante.Sexo;
+                EstudianteEncontrado.Nota1 = estudiante.Nota1;
+                EstudianteEncontrado.Nota2 = estudiante.Nota2;
+                EstudianteEncontrado.Nota3 = estudiante.Nota3;
+                return "ESTUDIANTE MODIFICADO";
+            }
+            return "NO SE PUDO MODIFICAR EL ESTUDIANTE";
+        }
+
+        private Estudiante BuscarEstudiante(Estudiante estudiante)
+        {
+            foreach (var item in ListaEstudiantes)
+            {
+                if (item.ID == estudiante.ID)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        private Estudiante BuscarEstudiante(int id)
+        {
+            foreach (var item in ListaEstudiantes)
+            {
+                if (item.ID == id)
+                {
+                    return item;
+                }
+            }
+            return null;
         }
     }
 }

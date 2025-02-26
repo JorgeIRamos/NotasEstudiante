@@ -22,7 +22,8 @@ namespace NotApps.Presentacion
                 Console.WriteLine("2- LISTA ESTUDIANTE");
                 Console.WriteLine("3- BUSQUEDA DE ESTUDIANTE");
                 Console.WriteLine("4- ELIMINAR ESTUDIANTE");
-                Console.WriteLine("5- SALIR");
+                Console.WriteLine("5- MODIFICAR ESTUDIANTE");
+                Console.WriteLine("6- SALIR");
 
                 Console.WriteLine("SELECCIONE UNA OPCION (1-4)");
                 op = int.Parse(Console.ReadLine());
@@ -33,7 +34,6 @@ namespace NotApps.Presentacion
                         
                         Console.Clear();
                         estupresentacion.CapturarNotas();
-                        estupresentacion.ImprimirResultados();
                         break;
 
                     case 2:
@@ -53,13 +53,19 @@ namespace NotApps.Presentacion
 
                     case 5:
                         Console.Clear();
-                        Console.WriteLine("GRACIAS POR UTILIZAR EL PROGRAMA");
+                        estupresentacion.Modificar();
+                        Console.ReadKey();
+                        break;
+                    
+                    case 6:
+                        Console.Clear();
+                        Console.WriteLine("GRACIAS POR UTILIZAR EL SISTEMA");
                         Console.ReadKey();
                         break;
                 }
 
 
-            } while (op != 5);
+            } while (op != 6);
         }
     }
 }
