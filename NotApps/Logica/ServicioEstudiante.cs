@@ -112,5 +112,18 @@ namespace NotApps.Logica
             }
             return null;
         }
+        public string AgregarEstudiante(List<Estudiante> lista)
+        {
+            int contador = 0;
+            foreach (var item in lista)
+            {
+                if (BuscarEstudiante(item) == null)
+                {
+                    ListaEstudiantes.Add(item);
+                    contador++;
+                }
+            }
+            return $"Se agregaron {contador} estudiantes de {lista.Count}";
+        }
     }
 }
